@@ -7,7 +7,7 @@
 // SCK1 (B14)       -> SCL
 // some digital pin -> CS
 
-#define CS LATBbits.LATB4 // replace x with some digital pin (B4)
+#define CS LATAbits.LATA4 // replace x with some digital pin (A4)
 
 // send a byte via spi and return the response
 unsigned char spi_io(unsigned char o) {
@@ -45,14 +45,14 @@ void acc_write_register(unsigned char reg, unsigned char data) {
 
 
 void acc_setup() {
-  TRISBbits.TRISB4 = 0; // set CS to output and digital if necessary
+  TRISAbits.TRISA4 = 0; // set CS to output and digital if necessary
   CS = 1;
 
   // select a pin for SDI1
   SDI1Rbits.SDI1R = 0b0001; //B5
 
   // select a pin for SD01
-  RPA1Rbits.RPA1R = 0b0011; //A1
+  RPB2Rbits.RPB2R = 0b0011; //B2
 
   // Setup the master Master - SPI1
   // we manually control SS as a digital output 
