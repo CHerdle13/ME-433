@@ -56,6 +56,8 @@ void write_accel_bars(short accels[3]){
 
 void main() {
 
+    PIC32startup();
+    display_init();
     acc_setup();
 
     short accels[3];
