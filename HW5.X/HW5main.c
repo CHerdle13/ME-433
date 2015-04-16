@@ -20,8 +20,8 @@ void write_accel_bars(short accels[3]){
     int ybar;
     int startrow = 32;
     int startcol = 64;
-    xbar = accels[0]*10;
-    ybar = accels[1]*10;
+    xbar = accels[0]/50;
+    ybar = accels[1]/50;
     int i = 0;
     int j = 0;
     if (xbar > 0){
@@ -66,7 +66,7 @@ void main() {
     acc_read_register(OUT_X_L_M, (unsigned char *) mags, 6);
     acc_read_register(TEMP_OUT_L, (unsigned char *) &temp, 2);
 
-    char message[20];
+    char message[50];
     sprintf(message, "x: %d y: %d z: %d temp: %d", accels[0], accels[1], accels[2], temp);
     write_to_screen(message, 7, 2);
     write_accel_bars(accels);
