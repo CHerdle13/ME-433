@@ -67,9 +67,17 @@ void PIC32startup(void){
     //RPB7Rbits.RPB7R=0b0001; //sets up LED1 pin as a digital output
     TRISBbits.TRISB7=0;
 
-    ANSELBbits.ANSB15=0; //sets up LED2 pin as digital PWM output
-    RPB15Rbits.RPB15R=0b0101;
+    ANSELAbits.ANSA0=0; //sets up A0 as digital PWM output (OC1)
+    RPA0Rbits.RPA0R=0b0101;
 
+    ANSELAbits.ANSA1=0; //sets up A1 as digital PWM output (OC2)
+    RPA1Rbits.RPA1R=0b0101;
+
+    ANSELBbits.ANSB0=0; //sets up B0 as digital PWM output (OC3)
+    RPB0Rbits.RPB0R =0b0101;
+
+    ANSELBbits.ANSB2=0; //sets up B2 as digital PWM output (OC4)
+    RPB2Rbits.RPB2R=0b0101;
 
     OC1CONbits.OCM=0b110; //enable OC1
     OC1CONbits.OCTSEL=0;
@@ -83,6 +91,18 @@ void PIC32startup(void){
     OC2R=0;
     OC2CONbits.ON=1;
 
+    OC3CONbits.OCM=0b110; //enable OC3
+    OC3CONbits.OCTSEL=0;
+    OC3RS=0;
+    OC3R=0;
+    OC3CONbits.ON=1;
+
+    OC4CONbits.OCM=0b110; //enable OC4
+    OC4CONbits.OCTSEL=0;
+    OC4RS=0;
+    OC4R=0;
+    OC4CONbits.ON=1;
+
     PR2=625-1; //sets up timer 2 to run at 1kHz
     TMR2=0;
     T2CONbits.TCKPS=0b110;
@@ -90,10 +110,10 @@ void PIC32startup(void){
     T2CONbits.TCS=0;
     T2CONbits.ON=1;
 
-    ANSELAbits.ANSA0 = 1; //sets up A0 as AN0
-    AD1CON3bits.ADCS = 3;
-    AD1CHSbits.CH0SA = 0;
-    AD1CON1bits.ADON = 1;
+    //ANSELAbits.ANSA0 = 1; //sets up A0 as AN0
+    //AD1CON3bits.ADCS = 3;
+    //AD1CHSbits.CH0SA = 0;
+    //AD1CON1bits.ADON = 1;
 
 }
 
